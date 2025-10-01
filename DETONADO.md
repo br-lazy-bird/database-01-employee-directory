@@ -160,7 +160,7 @@ The planner's estimate (300 rows) was close to the actual result (346).
 
 Execution took ~278 ms, with most time spent scanning.
 
-**Key insight:** Even though PostgreSQL uses parallel workers to speed up the sequential scan, it's still reading almost all 1 million rows. The database has no way to know which rows match without checking each one. With indexes, PostgreSQL can jump directly to the matching rows without scanning the rest of the table.
+**Key insight:** Even though PostgreSQL uses parallel workers to speed up the sequential scan, it's still reading all 1 million rows. The database has no way to know which rows match without checking each one. With indexes, PostgreSQL can jump directly to the matching rows without scanning the rest of the table.
 
 ---
 
