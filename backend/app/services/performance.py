@@ -93,7 +93,7 @@ class PerformanceService:
             "current_query_time": round(query_time, 2),
             "total_time": round(total_time, 2),
             "results_count": results_count,
-            "status": "running" if current < total else "completed",
+            "status": "running",
         }
 
     def _create_final_result(
