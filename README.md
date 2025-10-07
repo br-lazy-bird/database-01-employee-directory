@@ -109,6 +109,20 @@ docker compose exec db psql -U lazybird_dev -d employee_directory
 
 ---
 
+## Running Tests
+
+The project includes automated integration tests for the backend API.
+
+**Run all tests:**
+```bash
+pytest backend/tests/ -v -s
+```
+
+Tests automatically manage an isolated test database on port 5433 with 10,000 employee records.
+
+---
+
+
 ## Security Note
 
 This project includes a `.env.development` file with development credentials. Copy this file to `.env` before running the system:
