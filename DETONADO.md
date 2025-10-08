@@ -100,7 +100,7 @@ If you want to learn more about database indexes:
 ### Step 1: Connect to the Database
 
 ```bash
-docker compose exec db psql -U lazybird_dev -d employee_directory
+make db-shell
 ```
 
 ### Step 2: Examine the Table Structure
@@ -175,7 +175,7 @@ The solution is to create indexes on the columns being searched. There are two a
 A composite index indexes multiple columns together. This is ideal when queries always search both columns simultaneously:
 
 ```bash
-docker compose exec db psql -U lazybird_dev -d employee_directory
+make db-shell
 ```
 
 ```sql

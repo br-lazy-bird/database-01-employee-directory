@@ -18,3 +18,17 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+
+  test-runner:
+    build: ./backend
+    container_name: employee_directory_test_runner
+    environment:
+      - DATABASE_URL=postgresql://test_user:test_password@test-db:5432/test_employee_directory
+      - TEST_DB_HOST=test-db
+      - TEST_DB_PORT=5432
+    depends_on:
+      test-db:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+    command: pytest tests/ -v -s

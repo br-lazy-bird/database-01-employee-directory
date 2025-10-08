@@ -13,12 +13,17 @@ An educational project for learning database performance optimization through ha
 
 ### Setup
 
-```bash
-# Copy environment configuration
-cp .env.development .env
+This project includes a `.env.development` file with development credentials. Copy this file to `.env` before running the system:
 
+```bash
+cp .env.development .env
+```
+
+These credentials are for **local development only** and contain no sensitive data. In production applications, always use proper secret management and never commit credentials to version control.
+
+```bash
 # Start the system
-docker compose up --build
+make run
 ```
 
 The system will:
@@ -97,7 +102,7 @@ Compare these metrics before and after your optimization to measure the improvem
 
 **Using psql:**
 ```bash
-docker compose exec db psql -U lazybird_dev -d employee_directory
+make db-shell
 ```
 
 **Connection Details:**
@@ -115,23 +120,10 @@ The project includes automated integration tests for the backend API.
 
 **Run all tests:**
 ```bash
-pytest backend/tests/ -v -s
+make test
 ```
 
 Tests automatically manage an isolated test database on port 5433 with 10,000 employee records.
-
----
-
-
-## Security Note
-
-This project includes a `.env.development` file with development credentials. Copy this file to `.env` before running the system:
-
-```bash
-cp .env.development .env
-```
-
-These credentials are for **local development only** and contain no sensitive data. In production applications, always use proper secret management and never commit credentials to version control.
 
 ---
 
@@ -141,4 +133,4 @@ For detailed diagnostic guidance and step-by-step optimization instructions, see
 
 ---
 
-Ready to start? Run `docker compose up --build` and dive in!
+Ready to start? Run `make run` and dive in!
