@@ -9,8 +9,7 @@ services:
     ports:
       - "5433:5432"
     volumes:
-      - ./database/init/01-schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
-      - ./database/init/02-seed-data-test.sql:/docker-entrypoint-initdb.d/02-seed-data.sql
+      - ./database/init-test:/docker-entrypoint-initdb.d
     tmpfs:
       - /var/lib/postgresql/data
     healthcheck:
