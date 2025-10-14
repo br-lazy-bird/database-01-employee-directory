@@ -16,7 +16,7 @@ help:
 # Application commands
 run:
 	@echo "Starting application..."
-	docker compose up --build
+	docker compose up --build -d
 
 stop:
 	@echo "Stopping application..."
