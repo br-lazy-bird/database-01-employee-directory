@@ -1,9 +1,10 @@
-.PHONY: help run stop clean test test-db-up test-db-down test-shell logs db-shell
+.PHONY: help run build stop clean test test-db-up test-db-down test-shell logs db-shell
 
 # Default target
 help:
 	@echo "Available commands:"
 	@echo "  make run          - Start the application (frontend + backend + database)"
+	@echo "  make build        - Build and start the application"
 	@echo "  make stop         - Stop the application"
 	@echo "  make clean        - Stop and remove all containers and volumes"
 	@echo "  make logs         - Show application logs"
@@ -16,6 +17,10 @@ help:
 # Application commands
 run:
 	@echo "Starting application..."
+	docker compose up -d
+
+build:
+	@echo "Building and starting application..."
 	docker compose up --build -d
 
 stop:
