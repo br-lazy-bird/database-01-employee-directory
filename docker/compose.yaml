@@ -10,7 +10,7 @@ services:
       - "${POSTGRES_EXTERNAL_PORT}:${POSTGRES_PORT}"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./database/init-dev:/docker-entrypoint-initdb.d
+      - ../database/init-dev:/docker-entrypoint-initdb.d
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 10s
@@ -26,7 +26,7 @@ services:
           memory: 256M 
 
   backend:
-    build: ./backend
+    build: ../backend
     container_name: employee_directory_backend
     environment:
       - DATABASE_URL=${DATABASE_URL}
@@ -34,7 +34,7 @@ services:
     ports:
       - "${BACKEND_PORT}:8000"
     volumes:
-      - ./backend/app:/app/app
+      - ../backend/app:/app/app
 
     depends_on:
       db:
@@ -47,15 +47,15 @@ services:
       start_period: 40s
 
   frontend:
-    build: ./frontend
+    build: ../frontend
     container_name: employee_directory_frontend
     environment:
       - NODE_ENV=${NODE_ENV}
     ports:
       - "${FRONTEND_PORT}:3000"
     volumes:
-      - ./frontend/src:/app/src
-      - ./frontend/public:/app/public
+      - ../frontend/src:/app/src
+      - ../frontend/public:/app/public
     depends_on:
       backend:
         condition: service_healthy
